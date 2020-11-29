@@ -10,7 +10,7 @@ class Activity {
   }
 
   startDate() {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
     let date = new Date(this.activity.start_date)
 
     return date.toLocaleDateString("en-GB", options)
