@@ -65,8 +65,9 @@ const Mapbox = Vue.component('Mapbox', {
     },
 
     obtainStravaAuth() {
+      // Really all of these requests should be made server side to prevent secrets from being visible
       const clientId = 57045;
-      const redirectUri = 'http://localhost:8000';
+      const redirectUri = 'https://lewisyoul.github.io/where_you_been';
       const authUri = `https://www.strava.com/oauth/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&approval_prompt=force&scope=activity:read`
 
       window.location = authUri
