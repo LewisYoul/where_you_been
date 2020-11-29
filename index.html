@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All My Routes</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- <script src="src/app.js"></script> -->
+    <script src="src/components/mapbox.js"></script>
+    <script src="src/components/modal.js"></script>
+    <script src="src/models/activity.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mapbox/polyline@1.1.1/src/polyline.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+      .block { display: block }
+      .activities {
+        overflow-y: scroll;
+        flex: 1;
+        background-color: #F7F7FA;
+      }
+
+      .activity {
+        padding: 8px 16px;
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        height: 100px;
+        border-bottom: 3px solid #ce612e;
+      }
+
+      .activity--container {
+      }
+
+      html, body {
+        margin: 0;
+        height: 100%;
+      }
+    
+      .authorize-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 2;
+      }
+    
+      .modal-mask {
+        position: fixed;
+        z-index: 4;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: table;
+        transition: opacity 0.3s ease;
+      }
+    
+      .modal-mask:hover {
+        cursor: auto;
+      }
+    
+      .modal-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    
+      .modal-container {
+        max-width: calc(720px - 60px);
+        margin: 0px auto;
+        padding: 40px 30px;
+        background-color: #fff;
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+        transition: all 0.3s ease;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+    
+      .hidden { display: none; }
+    
+      h2, p { text-align: center; }
+      button {
+        background-color: #E34A01;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+      }
+    
+      button:hover {
+        cursor: pointer;
+      }
+    
+      .button-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="app" style='width: 100%; height: 100%;'>
+      <Mapbox></Mapbox>
+    </div>
+  </body>
+</html>
+
+<script>
+  new Vue({ el: '#app' })
+</script>
