@@ -101,7 +101,10 @@ const Mapbox = Vue.component('Mapbox', {
             this.activities.push(activity)
           })
 
-          if (this.activities.length > 0) { this.activities[0].flyTo(); };
+          setTimeout(() => {
+            this.map.resize();
+            if (this.activities.length > 0) { this.activities[0].flyTo(); };
+          }, 50)
         })
         .catch(err => {
           this.showModal = true
