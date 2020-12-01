@@ -3,11 +3,11 @@ const Mapbox = Vue.component('Mapbox', {
   <div style='width: 100%; height: 100%; display: flex;'>
     <div v-if="activities.length > 0" class="activities">
       <div v-for="activity in activities" @mouseover="mouseover(activity)" @mouseleave="mouseleave(activity)" @click="activity.flyTo" class="activity">
-        <div style="margin-right: 6px;">
+        <div style="margin-right: 10px;">
           <div style="">
-            <span class="block" style="font-size: 20px;">{{ activity.name() }}</span>
+            <span class="block" style="font-size: 18px;">{{ activity.name() }}</span>
           </div>
-          <span class="block" style="font-size: 14px; margin-top: 4px; color: grey;">{{ activity.startDate() }}</span>
+          <span class="block" style="font-size: 12px; margin-top: 4px; color: grey;">{{ activity.startDate() }}</span>
         </div>
         <div>
           <img width="25" height="25" :src="'assets/images/' + activity.icon()"></img>
