@@ -5,6 +5,14 @@ class Activity {
     this.color = this.getRandomColor()
   }
 
+  boundingBox() {
+    return turf.bbox(this.asGeoJSON())
+  }
+
+  coordinates() {
+    return polyline.decode(this.activity.map.summary_polyline)
+  }
+
   icon() {
     return `${this.activity.type.toLowerCase()}.svg`
   }
@@ -18,6 +26,7 @@ class Activity {
 
   flyTo() {
     console.log('fly')
+    this.map.fitBounds(this.boundingBox(), { padding: 80 })
   }
 
   hide() {

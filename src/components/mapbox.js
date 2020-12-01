@@ -2,7 +2,7 @@ const Mapbox = Vue.component('Mapbox', {
   template: `
   <div style='width: 100%; height: 100%; display: flex;'>
     <div v-if="activities.length > 0" class="activities">
-      <div v-for="activity in activities" @mouseover="mouseover(activity)" @mouseleave="mouseleave(activity)" @click="activity.flyTo" class="activity">
+      <div v-for="activity in activities" @mouseover="mouseover(activity)" @mouseleave="mouseleave" @click="flyTo(activity)" class="activity">
         <div style="margin-right: 10px;">
           <div style="">
             <span class="block" style="font-size: 18px;">{{ activity.name() }}</span>
@@ -55,8 +55,12 @@ const Mapbox = Vue.component('Mapbox', {
       activity.mouseover()
     },
 
-    mouseleave(activity) {
+    mouseleave() {
       this.activities.forEach(activity => activity.mouseleave())
+    },
+
+    flyTo(activity) {
+      activity.flyTo()
     },
 
     obtainStravaAuth() {
