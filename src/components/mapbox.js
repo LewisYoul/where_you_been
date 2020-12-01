@@ -33,9 +33,7 @@ const Mapbox = Vue.component('Mapbox', {
 
     this.map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: new mapboxgl.LngLat(...[52.36, -1.56].reverse()),
-      zoom: 8
+      style: 'mapbox://styles/mapbox/streets-v11'
     });
   },
 
@@ -102,6 +100,8 @@ const Mapbox = Vue.component('Mapbox', {
             activity.addToMap()
             this.activities.push(activity)
           })
+
+          if (this.activities.length > 0) { this.activities[0].flyTo(); };
         })
         .catch(err => {
           this.showModal = true
