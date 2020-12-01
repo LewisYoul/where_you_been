@@ -7,3 +7,10 @@ A small client side app that displays all of your Strava activities in one place
 * Vue JS
 * Mapbox
 * Strava API
+
+### TODO
+
+* Implement pagination allowing more than 30 routes to be retrieved.
+* Add functionality to filter activities by type and date.
+* Ensure route remains highlighted if it has been clicked.
+* Add missing activity type icons.
