@@ -10,7 +10,7 @@ const Mapbox = Vue.component('Mapbox', {
           <span class="block" style="font-size: 14px; margin-top: 4px; color: grey;">{{ activity.startDate() }}</span>
         </div>
         <div>
-          <img width="25" height="25" :src="'../../assets/images/' + activity.icon()"></img>
+          <img width="25" height="25" :src="'assets/images/' + activity.icon()"></img>
         </div>
       </div>
     </div>
@@ -29,7 +29,6 @@ const Mapbox = Vue.component('Mapbox', {
   },
 
   mounted() {
-    console.log('map')
     mapboxgl.accessToken = 'pk.eyJ1IjoibGV3aXN5b3VsIiwiYSI6ImNqYzM3a3lndjBhOXQyd24zZnVleGh3c2kifQ.qVH2-BA02t3p62tG72-DZA';
 
     this.map = new mapboxgl.Map({
@@ -37,10 +36,6 @@ const Mapbox = Vue.component('Mapbox', {
       style: 'mapbox://styles/mapbox/streets-v11',
       center: new mapboxgl.LngLat(...[52.36, -1.56].reverse()),
       zoom: 8
-    });
-  
-    this.map.on('load', () => {
-      console.log('gfds')
     });
   },
 
@@ -83,11 +78,9 @@ const Mapbox = Vue.component('Mapbox', {
   
       axios.post('https://www.strava.com/oauth/token', null, { params })
         .then(res => {
-          console.log(res)
           this.plotActivities(res.data.access_token)
         })
         .catch(err => {
-          console.error(err)
           this.showModal = true
         })
     },
@@ -97,20 +90,16 @@ const Mapbox = Vue.component('Mapbox', {
     
       axios.get(activitiesUrl, { headers: { 'Authorization': `Bearer ${bearerToken}` } })
         .then(res => {
-          console.log(res)
-    
           const activities = res.data
     
           activities.forEach(activityObj => {
             let activity = new Activity(activityObj, this.map)
+
             activity.addToMap()
             this.activities.push(activity)
           })
-
-          console.log('act', this.activities)
         })
         .catch(err => {
-          console.error(err)
           this.showModal = true
         })
     },

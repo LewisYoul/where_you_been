@@ -21,7 +21,6 @@ class Activity {
   }
 
   hide() {
-    // this.map.setPaintProperty(`route-${this.activity.id}`, 'line-color', 'transparent');
     this.map.setPaintProperty(`route-${this.activity.id}`, 'line-opacity', 0.2);
   }
 
